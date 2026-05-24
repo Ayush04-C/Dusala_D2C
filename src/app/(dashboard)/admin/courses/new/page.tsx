@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus, Trash2, Video, FileText, CheckCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function NewCoursePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -135,5 +137,3 @@ export default function NewCoursePage() {
   );
 }
 
-// Missing imports cleanup
-import { cn } from "@/lib/utils";

@@ -10,14 +10,14 @@ const mockInProgress = [
     id: "course-1",
     title: "Start Your Business from Zero",
     lesson: "Finding Your Niche",
-    thumbnail: "/images/course-thumbnails/course-1.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800",
     progress: 65,
   },
   {
     id: "course-2",
     title: "Scale on Instagram",
     lesson: "Instagram Algorithm 101",
-    thumbnail: "/images/course-thumbnails/course-2.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800",
     progress: 30,
   },
 ];
