@@ -1,0 +1,5 @@
+[
+  { "id": "user-1", "name": "Priya Sharma", "email": "admin@dushala.in", "role": "ADMIN" },
+  { "id": "user-2", "name": "Anita Rao", "email": "anita@example.com", "role": "STUDENT" },
+  { "id": "user-3", "name": "Meena Patel", "email": "meena@example.com", "role": "STUDENT" }
+]

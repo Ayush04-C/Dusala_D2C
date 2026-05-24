@@ -1,0 +1,16 @@
+{
+  "lesson-1-1": {
+    "lessonId": "lesson-1-1",
+    "title": "Lesson 1 — Business Validation",
+    "keyPoints": [
+      "Customer discovery is more important than product development",
+      "Validate demand before spending money",
+      "Use social media to test ideas with zero budget"
+    ],
+    "keyTerms": {
+      "MVP": "Minimum Viable Product — the simplest version of your idea",
+      "ICP": "Ideal Customer Profile — who exactly you are selling to"
+    },
+    "summary": "In this lesson, we covered why most new businesses fail and how to avoid that trap by talking to real customers first..."
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "course-1",
+    "title": "Start Your Business from Zero",
+    "description": "Learn how to validate your idea, register your business, and make your first sale in the Indian market.",
+    "thumbnail": "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800",
+    "price": 0,
+    "language": "EN",
+    "isPublished": true,
+    "duration": "6 hrs",
+    "modules": 8,
+    "students": 1240
+  },
+  {
+    "id": "course-2",
+    "title": "Scale on Instagram",
+    "description": "Build a powerful brand presence and convert followers into paying customers using proven D2C strategies.",
+    "thumbnail": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800",
+    "price": 1999,
+    "language": "HI",
+    "isPublished": true,
+    "duration": "9 hrs",
+    "modules": 12,
+    "students": 3180
+  },
+  {
+    "id": "course-3",
+    "title": "Financial Freedom for Women",
+    "description": "Master personal finance, investments, and build multiple passive income streams on your own terms.",
+    "thumbnail": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800",
+    "price": 2999,
+    "language": "TE",
+    "isPublished": true,
+    "duration": "11 hrs",
+    "modules": 14,
+    "students": 890
+  }
+]

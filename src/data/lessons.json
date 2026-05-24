@@ -1,0 +1,29 @@
+[
+  {
+    "id": "lesson-1-1",
+    "courseId": "course-1",
+    "title": "Introduction to Business Validation",
+    "videoUrlEn": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrlHi": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrlTe": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "duration": 600,
+    "order": 1
+  },
+  {
+    "id": "lesson-1-2",
+    "courseId": "course-1",
+    "title": "Finding Your Niche",
+    "videoUrlEn": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "duration": 900,
+    "order": 2
+  },
+  {
+    "id": "lesson-2-1",
+    "courseId": "course-2",
+    "title": "Instagram Algorithm 101",
+    "videoUrlEn": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrlHi": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "duration": 1200,
+    "order": 1
+  }
+]
