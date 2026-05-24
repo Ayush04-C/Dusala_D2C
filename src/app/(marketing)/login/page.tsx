@@ -14,22 +14,13 @@ export default function LoginPage() {
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
-    try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      
-      const user = auth.currentUser;
-      if (user?.email === "admin@skbusiness.in") {
-        router.push("/admin/dashboard");
-      } else {
-        router.push("/student/dashboard");
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
-      alert("Login failed. Please check your Firebase configuration.");
-    } finally {
-      setIsLoading(false);
-    }
+    
+    // Mock Student Authentication for MVP
+    // Bypassing Firebase so it works on Vercel without environment variables
+    setTimeout(() => {
+      localStorage.setItem("mockStudentAuth", "true");
+      router.push("/student/dashboard");
+    }, 800);
   };
 
   const handleAdminMockLogin = (e: React.FormEvent) => {

@@ -19,15 +19,17 @@ export default function DashboardLayout({
 
   useEffect(() => {
     const isMockAdmin = localStorage.getItem("mockAdminAuth") === "true";
-    if (!loading && !user && !isMockAdmin) {
+    const isMockStudent = localStorage.getItem("mockStudentAuth") === "true";
+    if (!loading && !user && !isMockAdmin && !isMockStudent) {
       router.push("/login");
     }
   }, [user, loading, router]);
 
   const isMockAdmin = typeof window !== 'undefined' && localStorage.getItem("mockAdminAuth") === "true";
+  const isMockStudent = typeof window !== 'undefined' && localStorage.getItem("mockStudentAuth") === "true";
 
   if (loading) return <div className="min-h-screen flex items-center justify-center bg-brand-ivory">Loading...</div>;
-  if (!user && !isMockAdmin) return null;
+  if (!user && !isMockAdmin && !isMockStudent) return null;
 
   return (
     <div className="min-h-screen bg-brand-ivory flex">
@@ -45,7 +47,7 @@ export default function DashboardLayout({
             <Menu size={24} />
           </button>
           <div className="w-8 h-8 rounded-full bg-brand-rose/20 flex items-center justify-center text-brand-rose font-bold text-sm ml-auto uppercase">
-            {user?.displayName ? user.displayName[0] : (isMockAdmin ? "A" : "U")}
+            {user?.displayName ? user.displayName[0] : (isMockAdmin ? "A" : (isMockStudent ? "S" : "U"))}
           </div>
         </header>
         
