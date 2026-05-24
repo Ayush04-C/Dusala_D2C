@@ -48,7 +48,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Brand */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-heading font-bold text-brand-gold">Dushala</h2>
+          <h2 className="text-2xl font-heading font-bold text-brand-gold">SK Business</h2>
           <p className="text-white/60 text-sm leading-relaxed">
             Empowering Indian women entrepreneurs through high-impact business coaching and a community of like-minded leaders.
           </p>
@@ -101,7 +101,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-xs">
-        &copy; {new Date().getFullYear()} Dushala Business Academy. All rights reserved. Made with love for Indian Women.
+        &copy; {new Date().getFullYear()} SK Business Academy. All rights reserved. Made with love for Indian Women.
       </div>
     </footer>
   );

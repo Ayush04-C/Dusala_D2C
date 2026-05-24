@@ -1,7 +1,7 @@
-# Dushala Business Academy — Production MVP
+# SK Business Academy — Production MVP
 
 ## 1. Project Overview & Purpose
-Dushala Business Academy is a specialized D2C business coaching platform built for Indian women entrepreneurs. It provides a luxury, high-end learning experience with multilingual support (English, Hindi, Telugu), interactive video quizzes, and AI-generated lesson summaries.
+SK Business Academy is a specialized D2C business coaching platform built for Indian women entrepreneurs. It provides a luxury, high-end learning experience with multilingual support (English, Hindi, Telugu), interactive video quizzes, and AI-generated lesson summaries.
 
 ## 2. Architecture Diagram
 ```mermaid

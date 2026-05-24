@@ -57,7 +57,7 @@ export function Navbar() {
             isDarkNav ? "text-brand-rose" : "text-white"
           )}
         >
-          Dushala
+          SK Business
         </Link>
 
         {/* ── Desktop Nav Links ──────────────────────────────────────────── */}

@@ -11,7 +11,7 @@ export default function AdminDashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-heading font-bold text-brand-dark mb-2">Admin Command Center</h1>
-          <p className="text-brand-muted">Real-time overview of Dushala Business Academy.</p>
+          <p className="text-brand-muted">Real-time overview of SK Business Academy.</p>
         </div>
         <div className="flex gap-4">
           <Button variant="outline" className="h-12 px-8 rounded-lg border-2 border-brand-rose text-brand-rose bg-transparent hover:bg-brand-rose hover:text-white transition-all font-medium" disabled>

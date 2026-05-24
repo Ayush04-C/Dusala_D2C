@@ -33,7 +33,7 @@ export function HeroSection() {
       <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
         <h1 ref={titleRef} className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
           Scale Your Dream <br />
-          <span className="text-brand-gold italic">The Dushala Way.</span>
+          <span className="text-brand-gold italic">The SK Business Way.</span>
         </h1>
 
         <p ref={subtitleRef} className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto font-body leading-relaxed">

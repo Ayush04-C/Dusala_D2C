@@ -27,8 +27,8 @@ const inter = Inter({
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
   title: {
-    default: "Dushala Business Academy",
-    template: "%s | Dushala Business Academy",
+    default: "SK Business Academy",
+    template: "%s | SK Business Academy",
   },
   description:
     "India's premier D2C business coaching platform for women entrepreneurs. Learn to start, scale, and succeed with expert-led video courses.",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "D2C",
     "India",
     "online courses",
-    "Dushala",
+    "SK Business",
   ],
 };
 
@@ -51,6 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${playfairDisplay.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

@@ -52,7 +52,7 @@ export function FeaturesSection() {
     <section ref={sectionRef} className="py-24 px-6 bg-brand-ivory">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4">Why Dushala?</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4">Why SK Business?</h2>
           <p className="text-brand-muted max-w-2xl mx-auto">Designed for the modern Indian woman entrepreneur who demands excellence and flexibility.</p>
         </div>
 

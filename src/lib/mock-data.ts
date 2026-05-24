@@ -8,6 +8,11 @@ export async function getMockData<T>(filename: string): Promise<T> {
   return JSON.parse(fileContent) as T;
 }
 
+export async function saveMockData(filename: string, data: any): Promise<void> {
+  const filePath = path.join(process.cwd(), 'src', 'data', filename);
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
 export async function getCourses() {
   return getMockData<any[]>('courses.json');
 }

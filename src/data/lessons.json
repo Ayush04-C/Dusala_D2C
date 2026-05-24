@@ -25,5 +25,13 @@
     "videoUrlHi": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "duration": 1200,
     "order": 1
+  },
+  {
+    "id": "lesson-1779654900000",
+    "courseId": "course-1779653755997",
+    "title": "Introduction & Foundations",
+    "description": "The first module of your new course.",
+    "videoUrlEn": "https://youtu.be/DxL2HoqLbyA?si=VzZ1Ny06BdAvLuuE",
+    "duration": 900
   }
 ]

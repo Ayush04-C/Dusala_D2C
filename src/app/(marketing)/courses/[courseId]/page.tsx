@@ -72,10 +72,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ c
                 <Image src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976" alt="Mentor" fill className="object-cover" />
               </div>
               <div>
-                <h3 className="text-xl font-heading font-bold text-brand-dark">Meera Dushala</h3>
+                <h3 className="text-xl font-heading font-bold text-brand-dark">Sugandha Kedia</h3>
                 <p className="text-brand-rose text-sm font-bold uppercase tracking-widest mb-2">Founder & Master Coach</p>
                 <p className="text-brand-muted text-sm leading-relaxed">
-                  Building Dushala to empower every Indian woman with the skills to lead and thrive in business.
+                  Building SK Business to empower every Indian woman with the skills to lead and thrive in business.
                 </p>
               </div>
             </div>

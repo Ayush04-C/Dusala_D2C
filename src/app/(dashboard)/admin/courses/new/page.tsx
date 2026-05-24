@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,8 +14,47 @@ import { Plus, Trash2, Video, FileText, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function NewCoursePage() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [step, setStep] = useState(1);
+  
+  const [courseData, setCourseData] = useState({
+    title: "",
+    description: "",
+    price: "",
+    language: "EN",
+    videoUrl: ""
+  });
+
+  const handlePublish = async () => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/courses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: courseData.title || "Untitled Course",
+          description: courseData.description || "A new course.",
+          price: parseInt(courseData.price) || 0,
+          languages: [courseData.language],
+          modules: 1,
+          videoUrl: courseData.videoUrl
+        })
+      });
+
+      if (response.ok) {
+        // Force router refresh so the student dashboard gets the new JSON data
+        router.push("/student/courses");
+        router.refresh();
+      } else {
+        alert("Failed to publish course.");
+        setIsSubmitting(false);
+      }
+    } catch (e) {
+      alert("Error publishing course.");
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -35,20 +75,39 @@ export default function NewCoursePage() {
           <CardContent className="px-0 space-y-6">
             <div className="space-y-2">
               <Label htmlFor="title" className="text-brand-dark font-bold">Course Title</Label>
-              <Input id="title" placeholder="e.g. Start Your Business from Zero" className="h-12 border-brand-rose/20 focus:ring-brand-rose" />
+              <Input 
+                id="title" 
+                placeholder="e.g. Start Your Business from Zero" 
+                className="h-12 border-brand-rose/20 focus:ring-brand-rose"
+                value={courseData.title}
+                onChange={(e) => setCourseData({...courseData, title: e.target.value})}
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="description" className="text-brand-dark font-bold">Description</Label>
-              <Textarea id="description" placeholder="What will students learn in this course?" className="min-h-[120px] border-brand-rose/20 focus:ring-brand-rose" />
+              <Textarea 
+                id="description" 
+                placeholder="What will students learn in this course?" 
+                className="min-h-[120px] border-brand-rose/20 focus:ring-brand-rose"
+                value={courseData.description}
+                onChange={(e) => setCourseData({...courseData, description: e.target.value})}
+              />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="price" className="text-brand-dark font-bold">Price (₹)</Label>
-                <Input id="price" type="number" placeholder="1999" className="h-12 border-brand-rose/20 focus:ring-brand-rose" />
+                <Input 
+                  id="price" 
+                  type="number" 
+                  placeholder="1999" 
+                  className="h-12 border-brand-rose/20 focus:ring-brand-rose"
+                  value={courseData.price}
+                  onChange={(e) => setCourseData({...courseData, price: e.target.value})}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="language" className="text-brand-dark font-bold">Primary Language</Label>
-                <Select>
+                <Select value={courseData.language} onValueChange={(v) => setCourseData({...courseData, language: v || "EN"})}>
                   <SelectTrigger className="h-12 border-brand-rose/20 focus:ring-brand-rose">
                     <SelectValue placeholder="Select Language" />
                   </SelectTrigger>
@@ -82,7 +141,7 @@ export default function NewCoursePage() {
             <div className="flex items-start justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-brand-rose/10 rounded-full flex items-center justify-center text-brand-rose font-bold text-sm">1</div>
-                <h3 className="font-heading font-bold text-brand-dark">Introduction to Business Validation</h3>
+                <h3 className="font-heading font-bold text-brand-dark">{courseData.title || "Untitled Module"}</h3>
               </div>
               <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700 hover:bg-red-50">
                 <Trash2 size={18} />
@@ -94,7 +153,12 @@ export default function NewCoursePage() {
                 <Label className="text-xs font-bold uppercase tracking-widest text-brand-muted">Video URL (English)</Label>
                 <div className="relative">
                   <Video className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted" size={16} />
-                  <Input placeholder="YouTube or Vimeo URL" className="pl-10 border-brand-rose/10" />
+                  <Input 
+                    placeholder="YouTube or Vimeo URL" 
+                    className="pl-10 border-brand-rose/10"
+                    value={courseData.videoUrl}
+                    onChange={(e) => setCourseData({...courseData, videoUrl: e.target.value})}
+                  />
                 </div>
               </div>
               <div className="space-y-2">
@@ -121,10 +185,10 @@ export default function NewCoursePage() {
           </div>
           <h2 className="text-3xl font-heading font-bold text-brand-dark mb-4">Almost Ready!</h2>
           <p className="text-brand-muted max-w-md mx-auto mb-10">
-            Your course "Start Your Business from Zero" has been drafted. Once you publish, it will be visible to all students.
+            Your course "{courseData.title || "Untitled Course"}" has been drafted. Once you publish, it will be visible to all students.
           </p>
           <div className="flex flex-col gap-4 max-w-xs mx-auto">
-            <Button className="bg-brand-rose hover:bg-brand-rose/90 text-white h-12" onClick={() => setIsSubmitting(true)}>
+            <Button className="bg-brand-rose hover:bg-brand-rose/90 text-white h-12" onClick={handlePublish}>
               {isSubmitting ? "Publishing..." : "Publish Course Now"}
             </Button>
             <Link href="/admin/dashboard" className="w-full">

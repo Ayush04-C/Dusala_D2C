@@ -1,6 +1,6 @@
 // src/lib/constants.ts
 
-export const APP_NAME = "Dushala Business Academy";
+export const APP_NAME = "SK Business Academy";
 
 export const ROUTES = {
   HOME: '/',

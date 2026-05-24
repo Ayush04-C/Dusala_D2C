@@ -34,5 +34,19 @@
     "duration": "11 hrs",
     "modules": 14,
     "students": 890
+  },
+  {
+    "id": "course-1779653755997",
+    "title": "chaos theory",
+    "description": "chaos theory",
+    "price": 1999,
+    "languages": [
+      "EN"
+    ],
+    "modules": 1,
+    "videoUrl": "https://youtu.be/DxL2HoqLbyA?si=VzZ1Ny06BdAvLuuE",
+    "thumbnail": "https://img.youtube.com/vi/DxL2HoqLbyA/maxresdefault.jpg",
+    "rating": 5,
+    "students": 0
   }
 ]

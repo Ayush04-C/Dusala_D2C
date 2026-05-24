@@ -37,7 +37,7 @@ export default function LoginPage() {
       <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md border border-brand-rose/10">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-heading font-bold text-brand-dark mb-2">Welcome Back</h1>
-          <p className="text-brand-muted">Sign in to your Dushala Academy account.</p>
+          <p className="text-brand-muted">Sign in to your SK Business Academy account.</p>
         </div>
 
         <Button 

@@ -26,7 +26,7 @@ const plans = [
     name: "Elite",
     price: "₹4,999",
     description: "For established leaders.",
-    features: ["1-on-1 Mentorship", "In-Person Workshops", "Business Audit", "Lifetime Access", "Direct Line to Meera"],
+    features: ["1-on-1 Mentorship", "In-Person Workshops", "Business Audit", "Lifetime Access", "Direct Line to Sugandha"],
     cta: "Go Elite",
     href: "/checkout?plan=elite", // → Custom checkout
     popular: false,

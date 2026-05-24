@@ -6,13 +6,13 @@ const testimonials = [
   {
     name: "Pooja Hegde",
     role: "Jewelry Brand Owner",
-    content: "Dushala helped me scale my Instagram shop to a six-figure business in just 4 months. The Hindi lessons were a lifesaver!",
+    content: "SK Business helped me scale my Instagram shop to a six-figure business in just 4 months. The Hindi lessons were a lifesaver!",
     rating: 5,
   },
   {
     name: "Sarah Khan",
     role: "Home Decor Founder",
-    content: "The community at Dushala is unmatched. Having other women to bounce ideas off of changed everything for me.",
+    content: "The community at SK Business is unmatched. Having other women to bounce ideas off of changed everything for me.",
     rating: 5,
   },
   {

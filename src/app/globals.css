@@ -1,5 +1,5 @@
 /* 
- * Dushala Business Academy — Global Styles
+ * SK Business Academy — Global Styles
  * Google Fonts import MUST be the very first @import to avoid CSS parse errors.
  * In Tailwind CSS v4, @import "tailwindcss" generates @property rules internally,
  * and any subsequent @import url(...) violates the CSS spec (imports must precede all rules).
@@ -12,7 +12,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ─── Design System Tokens ─────────────────────────────────────────────────── */
-/* These map to the Dushala brand palette from the instructions spec.
+/* These map to the SK Business brand palette from the instructions spec.
    Tailwind v4 uses @theme blocks instead of tailwind.config.ts */
 @theme inline {
   /* Brand Colors */
@@ -70,7 +70,7 @@
 }
 
 /* ─── Light Mode (default) ─────────────────────────────────────────────────── */
-/* Uses Dushala brand palette: ivory backgrounds, rose-gold primary, gold accents */
+/* Uses SK Business brand palette: ivory backgrounds, rose-gold primary, gold accents */
 :root {
   --background: #FAF5EE;
   --foreground: #1A1A1A;
@@ -159,7 +159,7 @@
 }
 
 /* ─── Component Layer ──────────────────────────────────────────────────────── */
-/* Reusable Dushala-branded utility classes */
+/* Reusable SK Business-branded utility classes */
 @layer components {
   .btn-primary {
     @apply bg-brand-rose text-white px-6 py-3 rounded-lg transition-all 

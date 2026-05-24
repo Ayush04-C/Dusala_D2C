@@ -10,11 +10,14 @@ interface CurriculumAccordionProps {
 }
 
 export function CurriculumAccordion({ lessons }: CurriculumAccordionProps) {
-  // Group lessons by "Module" (simple grouping for MVP)
-  const modules = [
-    { title: "Module 1: Foundations", lessons: lessons.slice(0, 2) },
-    { title: "Module 2: Advanced Strategies", lessons: lessons.slice(2) },
-  ];
+  // Group lessons dynamically for MVP
+  const modules = [];
+  if (lessons.length <= 1) {
+    modules.push({ title: "Module 1: Foundations", lessons: lessons });
+  } else {
+    modules.push({ title: "Module 1: Foundations", lessons: lessons.slice(0, Math.ceil(lessons.length / 2)) });
+    modules.push({ title: "Module 2: Advanced Strategies", lessons: lessons.slice(Math.ceil(lessons.length / 2)) });
+  }
 
   return (
     <Accordion className="w-full">

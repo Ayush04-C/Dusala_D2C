@@ -47,7 +47,7 @@ export function Sidebar() {
         <div className="flex flex-col h-full py-8 overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between px-6 mb-10 shrink-0">
-            {isSidebarOpen && <span className="text-xl font-heading font-bold text-brand-gold truncate">Dushala</span>}
+            {isSidebarOpen && <span className="text-xl font-heading font-bold text-brand-gold truncate">SK Business</span>}
             <Button
               variant="ghost"
               size="icon"
