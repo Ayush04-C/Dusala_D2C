@@ -34,12 +34,23 @@ export function VideoPlayer({ lesson, quiz }: VideoPlayerProps) {
     TE: lesson.videoUrlTe || lesson.videoUrlEn,
   }[language];
 
+  let finalSrc = videoSrc;
+  let provider = "html5";
+
+  if (videoSrc.includes("youtube") || videoSrc.includes("youtu.be")) {
+    provider = "youtube";
+    const match = videoSrc.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+    if (match && match[1]) {
+      finalSrc = match[1];
+    }
+  }
+
   const videoSource: any = {
     type: "video",
     sources: [
       {
-        src: videoSrc,
-        provider: videoSrc.includes("youtube") ? "youtube" : "html5",
+        src: finalSrc,
+        provider: provider,
       },
     ],
   };

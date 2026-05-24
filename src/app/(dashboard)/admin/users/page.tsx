@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { UserActions } from "@/components/admin/UserActions";
 
 export default async function UserManagementPage() {
   const users = await getMockData<any[]>("users.json");
@@ -75,9 +76,7 @@ export default async function UserManagementPage() {
                   <span className="text-sm font-medium text-brand-dark">Pro Plan</span>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Button variant="ghost" size="icon" className="text-brand-muted hover:text-brand-dark">
-                    <MoreHorizontal size={18} />
-                  </Button>
+                  <UserActions user={user} />
                 </TableCell>
               </TableRow>
             ))}
