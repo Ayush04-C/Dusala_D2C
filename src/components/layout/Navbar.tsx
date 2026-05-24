@@ -35,15 +35,12 @@ export function Navbar() {
       <nav
         aria-label="Main navigation"
         className={cn(
-          // Always keep border so it transitions smoothly (no flash).
-          // In hero state: border is transparent; in capsule: border-white/20.
-          "mx-auto flex items-center justify-between border transition-all duration-500 ease-out",
+          "mx-auto flex items-center justify-between transition-all duration-500 ease-out",
           isScrolled
             ? // ── Capsule state: frosted glass pill ──
-              "max-w-5xl bg-white/85 backdrop-blur-xl shadow-lg shadow-black/5 " +
-              "border-white/20 rounded-full px-6 py-2.5"
+              "max-w-5xl bg-white/20 backdrop-blur-xl shadow-lg shadow-black/10 rounded-full px-6 py-5"
             : // ── Hero state: full-width transparent ──
-              "max-w-7xl bg-transparent border-transparent rounded-none px-0 py-0"
+              "max-w-7xl bg-transparent rounded-none px-0 py-0"
         )}
       >
         {/* ── Logo ──────────────────────────────────────────────────────── */}
