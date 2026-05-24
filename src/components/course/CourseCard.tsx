@@ -22,7 +22,10 @@ export function CourseCard({ course }: CourseCardProps) {
   const hasThumbnail = !!course.thumbnail;
 
   return (
-    <Card className="course-card-anim overflow-hidden border-none shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full bg-white rounded-2xl">
+    <Card className="course-card-anim overflow-hidden border-none shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full bg-white rounded-2xl relative">
+      <Link href={`/courses/${course.id}`} className="absolute inset-0 z-10">
+        <span className="sr-only">View Course</span>
+      </Link>
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-brand-rose/20 to-brand-gold/20">
         {hasThumbnail ? (
@@ -40,7 +43,7 @@ export function CourseCard({ course }: CourseCardProps) {
         )}
 
         {/* Language badge */}
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-3 left-3 z-20">
           <Badge className="bg-brand-dark/80 text-white text-xs backdrop-blur-sm border-0">
             {LANGUAGE_LABELS[course.language] ?? course.language}
           </Badge>
@@ -48,14 +51,14 @@ export function CourseCard({ course }: CourseCardProps) {
 
         {/* Free badge */}
         {course.price === 0 && (
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-3 right-3 z-20">
             <Badge className="bg-brand-gold text-white text-xs border-0">Free</Badge>
           </div>
         )}
       </div>
 
       {/* Content */}
-      <CardContent className="p-5 flex-grow">
+      <CardContent className="p-5 flex-grow relative z-20 pointer-events-none">
         <h3 className="text-lg font-heading font-bold text-brand-dark mb-2 line-clamp-2 group-hover:text-brand-rose transition-colors">
           {course.title}
         </h3>
@@ -85,11 +88,11 @@ export function CourseCard({ course }: CourseCardProps) {
       </CardContent>
 
       {/* Footer CTA */}
-      <CardFooter className="p-5 pt-0 flex items-center justify-between">
+      <CardFooter className="p-5 pt-0 flex items-center justify-between relative z-20">
         <span className="font-heading font-bold text-brand-dark text-lg">
           {course.price === 0 ? "Free" : `₹${course.price.toLocaleString()}`}
         </span>
-        <Link href={`/student/courses/${course.id}`}>
+        <Link href={`/courses/${course.id}`} className="relative z-30">
           <Button
             size="sm"
             className="bg-brand-rose hover:bg-brand-rose/90 text-white font-medium rounded-full px-5"

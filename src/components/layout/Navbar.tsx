@@ -8,12 +8,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useAuth, SignInButton, UserButton } from "@clerk/nextjs";
+import { useAuth } from "@/context/AuthContext";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isSignedIn, isLoaded } = useAuth();
+  const { user, loading } = useAuth();
+  const isAuthenticated = !!user;
 
   // Trigger capsule transition once user scrolls past the hero fold
   useEffect(() => {
@@ -38,9 +39,9 @@ export function Navbar() {
           "mx-auto flex items-center justify-between transition-all duration-500 ease-out",
           isScrolled
             ? // ── Capsule state: frosted glass pill ──
-              "max-w-5xl bg-white/20 backdrop-blur-xl shadow-lg shadow-black/10 rounded-full px-6 py-5"
+            "max-w-5xl bg-white/20 backdrop-blur-xl shadow-lg shadow-black/10 rounded-full px-6 py-5"
             : // ── Hero state: full-width transparent ──
-              "max-w-7xl bg-transparent rounded-none px-0 py-0"
+            "max-w-7xl bg-transparent rounded-none px-0 py-0"
         )}
       >
         {/* ── Logo ──────────────────────────────────────────────────────── */}
@@ -58,7 +59,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-1">
           {/* Nav links with pill hover effect */}
           {[
-            { href: "/student/courses", label: "Courses" },
+            { href: "/courses", label: "Courses" },
             { href: "/pricing", label: "Pricing" },
             { href: "/about", label: "About" },
           ].map((link) => (
@@ -85,7 +86,7 @@ export function Navbar() {
           />
 
           {/* Auth CTA */}
-          {isLoaded && isSignedIn ? (
+          {isAuthenticated ? (
             <div className="flex items-center gap-3">
               <Link href="/student/dashboard">
                 <Button
@@ -100,10 +101,9 @@ export function Navbar() {
                   Dashboard
                 </Button>
               </Link>
-              <UserButton />
             </div>
-          ) : isLoaded ? (
-            <SignInButton mode="modal">
+          ) : (
+            <Link href="/checkout?plan=free">
               <Button
                 size="sm"
                 className={cn(
@@ -115,8 +115,8 @@ export function Navbar() {
               >
                 Enroll Now
               </Button>
-            </SignInButton>
-          ) : null}
+            </Link>
+          )}
         </div>
 
         {/* ── Mobile Toggle ─────────────────────────────────────────────── */}
@@ -150,7 +150,7 @@ export function Navbar() {
           role="menu"
         >
           {[
-            { href: "/student/courses", label: "Courses" },
+            { href: "/courses", label: "Courses" },
             { href: "/pricing", label: "Pricing" },
             { href: "/about", label: "About" },
           ].map((link) => (
@@ -167,7 +167,7 @@ export function Navbar() {
 
           <div className="h-px bg-brand-dark/10 my-1" />
 
-          {isLoaded && isSignedIn ? (
+          {isAuthenticated ? (
             <Link
               href="/student/dashboard"
               className="text-brand-rose font-semibold py-2.5 px-4 rounded-xl hover:bg-brand-rose/10 transition-colors"
@@ -176,13 +176,13 @@ export function Navbar() {
             >
               Dashboard
             </Link>
-          ) : isLoaded ? (
-            <SignInButton mode="modal">
+          ) : (
+            <Link href="/checkout?plan=free" onClick={() => setIsMobileMenuOpen(false)}>
               <Button className="w-full bg-brand-gold text-white rounded-xl mt-1 hover:bg-brand-gold/90">
                 Enroll Now
               </Button>
-            </SignInButton>
-          ) : null}
+            </Link>
+          )}
         </div>
       </div>
     </header>

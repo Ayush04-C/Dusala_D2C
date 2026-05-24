@@ -14,7 +14,7 @@ export function FeaturedCourses() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const sectionRef = useRef(null);
-  const headerRef  = useRef(null);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     fetch('/api/courses')
@@ -31,10 +31,7 @@ export function FeaturedCourses() {
         scrollTrigger: { trigger: headerRef.current, start: "top 80%" },
         y: 50, opacity: 0, duration: 1, ease: "power3.out",
       });
-      gsap.from(".course-card-anim", {
-        scrollTrigger: { trigger: ".course-grid-anim", start: "top 75%" },
-        y: 80, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out",
-      });
+      // Removed course-card-anim gsap.from to prevent cards from being permanently hidden if trigger fails
     }, sectionRef);
     return () => ctx.revert();
   }, [isLoading]);
@@ -49,8 +46,8 @@ export function FeaturedCourses() {
               Master the skills needed to build a profitable, sustainable business in the Indian market.
             </p>
           </div>
-          {/* View All Courses → /student/courses */}
-          <Link href="/student/courses">
+          {/* View All Courses → /courses */}
+          <Link href="/courses">
             <button className="h-12 px-8 border-2 border-brand-rose text-brand-rose rounded-lg hover:bg-brand-rose hover:text-white transition-all font-medium whitespace-nowrap">
               View All Courses
             </button>

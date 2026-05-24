@@ -1,10 +1,10 @@
 // src/components/student/WelcomeBanner.tsx
 "use client";
 
-import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@/context/AuthContext";
 
 export function WelcomeBanner() {
-  const { user } = useUser();
+  const { user } = useAuth();
   
   const quotes = [
     "Your ambition is your power. Keep leading.",
@@ -18,7 +18,7 @@ export function WelcomeBanner() {
     <div className="bg-brand-rose rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-xl mb-10">
       <div className="relative z-10">
         <h1 className="text-3xl md:text-4xl font-heading font-bold mb-3">
-          Welcome back, {user?.firstName || "Leader"} 👋
+          Welcome back, {user?.displayName?.split(" ")[0] || "Leader"} 👋
         </h1>
         <p className="text-white/80 font-medium italic">
           "{randomQuote}"

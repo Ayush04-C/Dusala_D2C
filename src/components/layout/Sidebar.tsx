@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { LayoutDashboard, BookOpen, BarChart3, Users, Settings, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
 import { useUIStore } from "@/store/useUIStore";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
 
 const navItems = [
   { label: "Dashboard", href: "/student/dashboard", icon: LayoutDashboard },
@@ -18,6 +19,7 @@ const navItems = [
 export function Sidebar() {
   const pathname = usePathname();
   const { isSidebarOpen, toggleSidebar } = useUIStore();
+  const { logout } = useAuth();
 
   return (
     <aside
@@ -65,6 +67,7 @@ export function Sidebar() {
           <Button
             variant="ghost"
             className="w-full justify-start text-white/70 hover:bg-white/5 hover:text-white px-4"
+            onClick={logout}
           >
             <LogOut size={22} />
             {isSidebarOpen && <span className="ml-4">Logout</span>}

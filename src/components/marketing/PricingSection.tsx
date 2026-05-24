@@ -10,7 +10,7 @@ const plans = [
     description: "Perfect for getting started.",
     features: ["Access to Intro Courses", "Public Community", "Basic AI Summaries", "Email Support"],
     cta: "Join for Free",
-    href: "/sign-up",          // → Clerk sign-up
+    href: "/checkout?plan=free", // → Custom checkout
     popular: false,
   },
   {
@@ -19,7 +19,7 @@ const plans = [
     description: "Accelerate your growth.",
     features: ["All Courses Included", "Private Mastermind", "Full AI Notes System", "Interactive Quizzes", "Priority Support"],
     cta: "Get Started",
-    href: "/sign-up?plan=pro", // → sign-up with plan hint
+    href: "/checkout?plan=pro", // → Custom checkout
     popular: true,
   },
   {
@@ -28,7 +28,7 @@ const plans = [
     description: "For established leaders.",
     features: ["1-on-1 Mentorship", "In-Person Workshops", "Business Audit", "Lifetime Access", "Direct Line to Meera"],
     cta: "Go Elite",
-    href: "/sign-up?plan=elite",
+    href: "/checkout?plan=elite", // → Custom checkout
     popular: false,
   },
 ];
