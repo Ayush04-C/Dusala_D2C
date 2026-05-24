@@ -14,11 +14,9 @@ export default function AdminDashboard() {
           <p className="text-brand-muted">Real-time overview of Dushala Business Academy.</p>
         </div>
         <div className="flex gap-4">
-          <a href="#" onClick={(e) => e.preventDefault()} title="Syllabus coming soon">
-            <button className="h-12 px-8 rounded-lg border-2 border-brand-rose text-brand-rose bg-transparent hover:bg-brand-rose hover:text-white transition-all font-medium">
-              Download Syllabus
-            </button>
-          </a>
+          <Button variant="outline" className="h-12 px-8 rounded-lg border-2 border-brand-rose text-brand-rose bg-transparent hover:bg-brand-rose hover:text-white transition-all font-medium" disabled>
+            Syllabus coming soon
+          </Button>
           <Link href="/admin/courses/new">
             <Button className="bg-brand-rose hover:bg-brand-rose/90 text-white gap-2 h-12 px-6">
               <PlusCircle size={20} />

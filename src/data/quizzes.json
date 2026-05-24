@@ -2,7 +2,7 @@
   "lesson-1-1": {
     "id": "quiz-1-1",
     "lessonId": "lesson-1-1",
-    "triggerTimestamp": 120,
+    "triggerTimestamp": 10,
     "questions": [
       {
         "id": "q1",

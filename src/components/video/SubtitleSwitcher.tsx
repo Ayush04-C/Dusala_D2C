@@ -22,11 +22,9 @@ export function SubtitleSwitcher() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="sm" className="bg-white/90 backdrop-blur hover:bg-white text-brand-dark flex items-center gap-2">
-          <Globe size={16} />
-          <span>{languages.find(l => l.value === language)?.label}</span>
-        </Button>
+      <DropdownMenuTrigger className="h-9 px-3 rounded-md bg-white/90 backdrop-blur hover:bg-white text-brand-dark flex items-center justify-center gap-2 text-sm font-medium shadow-sm transition-colors border border-brand-rose/10">
+        <Globe size={16} />
+        <span>{languages.find(l => l.value === language)?.label}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-white border-brand-rose/10">
         {languages.map((lang) => (

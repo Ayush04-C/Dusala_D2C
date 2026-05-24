@@ -3,6 +3,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import { PlayCircle, Clock } from "lucide-react";
 import { Lesson } from "@/types";
 import { formatDuration } from "@/lib/utils";
+import Link from "next/link";
 
 interface CurriculumAccordionProps {
   lessons: Lesson[];
@@ -16,7 +17,7 @@ export function CurriculumAccordion({ lessons }: CurriculumAccordionProps) {
   ];
 
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion className="w-full">
       {modules.map((module, i) => (
         <AccordionItem key={i} value={`module-${i}`} className="border-brand-rose/10">
           <AccordionTrigger className="hover:no-underline px-6 py-4 bg-brand-ivory/30">
@@ -27,16 +28,20 @@ export function CurriculumAccordion({ lessons }: CurriculumAccordionProps) {
           </AccordionTrigger>
           <AccordionContent className="p-0">
             {module.lessons.map((lesson, j) => (
-              <div key={j} className="flex items-center justify-between px-8 py-4 border-b border-brand-rose/5 last:border-0 hover:bg-brand-rose/5 transition-colors group">
+              <Link 
+                key={j} 
+                href={`/student/courses/${lesson.courseId}/lessons/${lesson.id}`}
+                className="flex items-center justify-between px-8 py-4 border-b border-brand-rose/5 last:border-0 hover:bg-brand-rose/5 transition-colors group"
+              >
                 <div className="flex items-center gap-3">
                   <PlayCircle size={18} className="text-brand-rose/40 group-hover:text-brand-rose" />
-                  <span className="text-sm font-medium text-brand-dark">{lesson.title}</span>
+                  <span className="text-sm font-medium text-brand-dark group-hover:underline">{lesson.title}</span>
                 </div>
                 <div className="flex items-center gap-1 text-[10px] text-brand-muted font-bold">
                   <Clock size={12} />
                   <span>{formatDuration(lesson.duration)}</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </AccordionContent>
         </AccordionItem>

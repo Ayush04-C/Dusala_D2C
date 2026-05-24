@@ -1,9 +1,9 @@
 "use client";
 // src/app/(marketing)/checkout/page.tsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const courseId = searchParams.get("course");
   const [course, setCourse] = useState<any>(null);
@@ -79,5 +79,13 @@ export default function CheckoutPage() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center pt-20">Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }

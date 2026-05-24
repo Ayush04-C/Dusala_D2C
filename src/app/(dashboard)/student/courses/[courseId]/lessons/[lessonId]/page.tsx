@@ -38,10 +38,10 @@ export default async function LessonPage({ params }: { params: Promise<{ courseI
             </div>
 
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="bg-transparent border-b border-brand-rose/10 rounded-none w-full justify-start h-auto p-0 space-x-8">
-                <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-rose data-[state=active]:bg-transparent px-0 py-3 text-sm font-bold uppercase tracking-widest">Overview</TabsTrigger>
-                <TabsTrigger value="resources" className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-rose data-[state=active]:bg-transparent px-0 py-3 text-sm font-bold uppercase tracking-widest">Resources</TabsTrigger>
-                <TabsTrigger value="qna" className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-rose data-[state=active]:bg-transparent px-0 py-3 text-sm font-bold uppercase tracking-widest">Q&A</TabsTrigger>
+              <TabsList className="bg-transparent border-b border-brand-rose/10 rounded-none w-full justify-start h-12 p-0 flex gap-8">
+                <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-rose data-active:border-brand-rose data-active:bg-transparent data-active:shadow-none px-0 py-3 text-sm font-bold uppercase tracking-widest h-full flex-none">Overview</TabsTrigger>
+                <TabsTrigger value="resources" className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-rose data-active:border-brand-rose data-active:bg-transparent data-active:shadow-none px-0 py-3 text-sm font-bold uppercase tracking-widest h-full flex-none">Resources</TabsTrigger>
+                <TabsTrigger value="qna" className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-rose data-active:border-brand-rose data-active:bg-transparent data-active:shadow-none px-0 py-3 text-sm font-bold uppercase tracking-widest h-full flex-none">Q&A</TabsTrigger>
               </TabsList>
               <TabsContent value="overview" className="py-6 text-brand-muted leading-relaxed">
                 In this lesson, we dive deep into the foundations of business validation. We'll cover why most businesses fail in their first year and how you can avoid those common pitfalls by following a customer-centric approach.

@@ -45,31 +45,39 @@ export function VideoPlayer({ lesson, quiz }: VideoPlayerProps) {
   };
 
   useEffect(() => {
-    if (!plyrRef.current) return;
+    const player = plyrRef.current?.plyr;
+    if (!player) return;
     
-    const player = plyrRef.current.plyr;
+    const bindEvent = (event: string, callback: any) => {
+      if (typeof player.on === "function") {
+        player.on(event, callback);
+      } else if (typeof player.addEventListener === "function") {
+        player.addEventListener(event, callback);
+      }
+    };
     
-    player.on("timeupdate", () => {
-      const currentTime = player.currentTime;
+    bindEvent("timeupdate", () => {
+      const currentTime = player.currentTime || 0;
       setCurrentTime(currentTime);
 
       // Trigger quiz logic
       if (quiz && !quizTriggered && currentTime >= quiz.triggerTimestamp && currentTime < quiz.triggerTimestamp + 1) {
-        player.pause();
+        if (typeof player.pause === "function") player.pause();
         triggerQuiz(quiz.id);
       }
     });
 
-    player.on("playing", () => setIsPlaying(true));
-    player.on("pause", () => setIsPlaying(false));
-    player.on("ready", () => setDuration(player.duration));
+    bindEvent("playing", () => setIsPlaying(true));
+    bindEvent("pause", () => setIsPlaying(false));
+    bindEvent("ready", () => setDuration(player.duration || 0));
 
   }, [quiz, quizTriggered, triggerQuiz, setCurrentTime, setIsPlaying, setDuration]);
 
   // Sync isPlaying state with player
   useEffect(() => {
-    if (!plyrRef.current) return;
-    const player = plyrRef.current.plyr;
+    const player = plyrRef.current?.plyr;
+    if (!player || typeof player.pause !== "function" || typeof player.play !== "function") return;
+    
     if (isPlaying && player.paused) player.play();
     if (!isPlaying && !player.paused) player.pause();
   }, [isPlaying]);
@@ -91,6 +99,12 @@ export function VideoPlayer({ lesson, quiz }: VideoPlayerProps) {
             "settings",
             "fullscreen",
           ],
+          markers: quiz ? {
+            enabled: true,
+            points: [
+              { time: quiz.triggerTimestamp, label: "Quiz Checkpoint" }
+            ]
+          } : undefined
         }}
       />
 
