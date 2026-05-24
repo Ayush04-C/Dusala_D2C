@@ -18,7 +18,12 @@ export default function LoginPage() {
       // Determine if admin or student here.
       // For MVP, we redirect everyone to the student dashboard.
       // In the future, check user custom claims or email to route to /admin/dashboard
-      router.push("/student/dashboard");
+            const user = auth.currentUser;
+      if (user?.email === "your-admin-email@gmail.com") {
+        router.push("/admin/dashboard");
+      } else {
+        router.push("/student/dashboard");
+      }
     } catch (error) {
       console.error("Login failed:", error);
       alert("Login failed. Please check your Firebase configuration.");
