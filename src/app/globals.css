@@ -180,3 +180,31 @@
     @apply bg-black/40 backdrop-blur-md;
   }
 }
+
+/* ─── Global Scrollbar Styling ─────────────────────────────────────────────── */
+/* For Chrome, Edge, Safari and Opera */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--background);
+}
