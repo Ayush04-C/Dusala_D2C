@@ -6,8 +6,8 @@ import { getCourses, getLessons, getQuizzes, getAISummaries } from "@/lib/mock-d
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-export default async function LessonPage({ params }: { params: { courseId: string, lessonId: string } }) {
-  const { courseId, lessonId } = params;
+export default async function LessonPage({ params }: { params: Promise<{ courseId: string, lessonId: string }> }) {
+  const { courseId, lessonId } = await params;
   
   const allLessons = await getLessons();
   const courses = await getCourses();

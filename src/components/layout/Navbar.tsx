@@ -7,14 +7,19 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, loading } = useAuth();
   const isAuthenticated = !!user;
+
+  // Force capsule/dark text mode if we are not on the root landing page
+  const isDarkNav = isScrolled || pathname !== "/";
 
   // Trigger capsule transition once user scrolls past the hero fold
   useEffect(() => {
@@ -30,14 +35,14 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
         // When scrolled: add top padding so the capsule floats below the edge
-        isScrolled ? "py-3 px-4 md:px-8" : "py-4 px-6"
+        isDarkNav ? "py-3 px-4 md:px-8" : "py-4 px-6"
       )}
     >
       <nav
         aria-label="Main navigation"
         className={cn(
           "mx-auto flex items-center justify-between transition-all duration-500 ease-out",
-          isScrolled
+          isDarkNav
             ? // ── Capsule state: frosted glass pill ──
             "max-w-5xl bg-white/20 backdrop-blur-xl shadow-lg shadow-black/10 rounded-full px-6 py-5"
             : // ── Hero state: full-width transparent ──
@@ -49,7 +54,7 @@ export function Navbar() {
           href="/"
           className={cn(
             "text-2xl font-heading font-bold transition-colors duration-300",
-            isScrolled ? "text-brand-rose" : "text-white"
+            isDarkNav ? "text-brand-rose" : "text-white"
           )}
         >
           Dushala
@@ -68,7 +73,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                isScrolled
+                isDarkNav
                   ? "text-brand-dark/80 hover:text-brand-dark hover:bg-brand-rose/10"
                   : "text-white/90 hover:text-white hover:bg-white/10"
               )}
@@ -81,7 +86,7 @@ export function Navbar() {
           <div
             className={cn(
               "w-px h-5 mx-2 transition-colors duration-300",
-              isScrolled ? "bg-brand-dark/15" : "bg-white/25"
+              isDarkNav ? "bg-brand-dark/15" : "bg-white/25"
             )}
           />
 
@@ -93,7 +98,7 @@ export function Navbar() {
                   size="sm"
                   className={cn(
                     "rounded-full px-5 text-sm font-medium transition-all duration-300",
-                    isScrolled
+                    isDarkNav
                       ? "bg-brand-rose text-white hover:bg-brand-rose/90"
                       : "bg-white/15 text-white border border-white/30 hover:bg-white/25"
                   )}
@@ -101,19 +106,22 @@ export function Navbar() {
                   Dashboard
                 </Button>
               </Link>
+              <div className="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-white font-bold text-sm uppercase">
+                {user?.displayName ? user.displayName[0] : "U"}
+              </div>
             </div>
           ) : (
-            <Link href="/checkout?plan=free">
+            <Link href="/login">
               <Button
                 size="sm"
                 className={cn(
                   "rounded-full px-6 text-sm font-semibold transition-all duration-300",
-                  isScrolled
-                    ? "bg-brand-gold text-white hover:bg-brand-gold/90 shadow-md shadow-brand-gold/20"
-                    : "bg-brand-gold text-white hover:bg-brand-gold/90"
+                  isDarkNav
+                    ? "bg-brand-dark text-white hover:bg-brand-dark/90"
+                    : "bg-white text-brand-dark hover:bg-white/90"
                 )}
               >
-                Enroll Now
+                Log In
               </Button>
             </Link>
           )}
@@ -123,7 +131,7 @@ export function Navbar() {
         <button
           className={cn(
             "md:hidden p-2 rounded-full transition-all duration-300",
-            isScrolled
+            isDarkNav
               ? "text-brand-dark hover:bg-brand-rose/10"
               : "text-white hover:bg-white/10"
           )}
@@ -177,9 +185,9 @@ export function Navbar() {
               Dashboard
             </Link>
           ) : (
-            <Link href="/checkout?plan=free" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button className="w-full bg-brand-gold text-white rounded-xl mt-1 hover:bg-brand-gold/90">
-                Enroll Now
+            <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button className="w-full bg-brand-dark text-white rounded-xl mt-1 hover:bg-brand-dark/90">
+                Log In
               </Button>
             </Link>
           )}

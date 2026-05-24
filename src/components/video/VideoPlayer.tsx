@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Plyr from "plyr-react";
+import { Plyr } from "plyr-react";
 import "plyr/dist/plyr.css";
 import { usePlayerStore } from "@/store/usePlayerStore";
 import { QuizOverlay } from "./QuizOverlay";

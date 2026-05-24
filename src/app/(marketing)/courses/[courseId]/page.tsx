@@ -7,15 +7,27 @@ import { getCourses, getLessons } from "@/lib/mock-data";
 import { Star, Clock, Globe, Award } from "lucide-react";
 import Link from "next/link";
 
-export default async function CourseDetailPage({ params }: { params: { courseId: string } }) {
-  const { courseId } = params;
+export default async function CourseDetailPage({ params }: { params: Promise<{ courseId: string }> }) {
+  const { courseId } = await params;
+  const normalizedId = courseId.replace(/%20/g, "-").replace(/ /g, "-");
+  
   const courses = await getCourses();
   const allLessons = await getLessons();
   
-  const course = courses.find(c => c.id === courseId);
-  const lessons = allLessons.filter(l => l.courseId === courseId);
+  const course = courses.find(c => c.id === normalizedId || c.id === courseId);
+  const lessons = allLessons.filter(l => l.courseId === course.id);
 
-  if (!course) return <div>Course not found</div>;
+  if (!course) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center pt-32 text-center px-6">
+        <h1 className="text-4xl font-heading font-bold text-brand-dark mb-4">Course not found</h1>
+        <p className="text-brand-muted text-lg mb-8">We couldn't find the course you're looking for.</p>
+        <Link href="/courses">
+          <Button className="bg-brand-rose hover:bg-brand-rose/90 text-white">Back to Courses</Button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-12 pt-32 px-6 max-w-7xl mx-auto min-h-screen pb-20">

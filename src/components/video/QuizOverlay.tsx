@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface QuizOverlayProps {
   quiz: Quiz;
@@ -138,5 +139,3 @@ export function QuizOverlay({ quiz }: QuizOverlayProps) {
   );
 }
 
-// Helper function to handle class merging
-import { cn } from "@/lib/utils";

@@ -7,8 +7,8 @@ import { getCourses, getLessons } from "@/lib/mock-data";
 import { Star, Clock, Globe, Award } from "lucide-react";
 import Link from "next/link";
 
-export default async function CourseDetailPage({ params }: { params: { courseId: string } }) {
-  const { courseId } = params;
+export default async function CourseDetailPage({ params }: { params: Promise<{ courseId: string }> }) {
+  const { courseId } = await params;
   const courses = await getCourses();
   const allLessons = await getLessons();
   
