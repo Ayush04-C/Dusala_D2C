@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase/config";
+import { useRouter } from "next/navigation";
 
 interface AuthContextType {
   user: User | null;
@@ -19,6 +20,7 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     if (!auth) {
@@ -36,7 +38,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     try {
-      if (auth) await signOut(auth);
+      if (auth) {
+        await signOut(auth);
+        router.push("/");
+      }
     } catch (error) {
       console.error("Logout failed", error);
     }

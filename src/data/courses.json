@@ -48,5 +48,19 @@
     "thumbnail": "https://img.youtube.com/vi/DxL2HoqLbyA/maxresdefault.jpg",
     "rating": 5,
     "students": 0
+  },
+  {
+    "id": "course-1779658281729",
+    "title": "test",
+    "description": "test",
+    "price": 1999,
+    "languages": [
+      "EN"
+    ],
+    "modules": 1,
+    "videoUrl": "https://youtu.be/lcjdwSY2AzM?si=10HL6GgmartCUANB",
+    "thumbnail": "https://img.youtube.com/vi/lcjdwSY2AzM/maxresdefault.jpg",
+    "rating": 5,
+    "students": 0
   }
 ]

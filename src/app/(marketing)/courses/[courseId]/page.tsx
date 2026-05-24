@@ -10,10 +10,10 @@ import Link from "next/link";
 export default async function CourseDetailPage({ params }: { params: Promise<{ courseId: string }> }) {
   const { courseId } = await params;
   const normalizedId = courseId.replace(/%20/g, "-").replace(/ /g, "-");
-  
+
   const courses = await getCourses();
   const allLessons = await getLessons();
-  
+
   const course = courses.find(c => c.id === normalizedId || c.id === courseId);
   const lessons = allLessons.filter(l => l.courseId === course.id);
 
