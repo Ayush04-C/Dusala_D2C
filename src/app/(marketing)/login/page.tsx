@@ -36,15 +36,12 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Mock authentication for Admin
+    // Mock authentication for Admin MVP
+    // Set a local storage flag to bypass the protected route middleware
     setTimeout(() => {
-      if (adminEmail === "admin@skbusiness.in" && adminPassword === "admin") {
-        router.push("/admin/dashboard");
-      } else {
-        alert("Invalid Admin Credentials! Use admin@skbusiness.in / admin");
-        setIsLoading(false);
-      }
-    }, 800);
+      localStorage.setItem("mockAdminAuth", "true");
+      router.push("/admin/dashboard");
+    }, 500);
   };
 
   return (
@@ -83,8 +80,8 @@ export default function LoginPage() {
           <form onSubmit={handleAdminMockLogin} className="space-y-4">
             <div>
               <input 
-                type="email" 
-                placeholder="Admin Email" 
+                type="text" 
+                placeholder="Admin Username or Email" 
                 value={adminEmail}
                 onChange={(e) => setAdminEmail(e.target.value)}
                 className="w-full h-12 px-4 rounded-xl border border-brand-rose/20 focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-all"
